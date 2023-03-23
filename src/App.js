@@ -261,28 +261,34 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const {timer} = this.state
-    if (timer > 0) {
-      this.timerId = setInterval(() => {
-        this.setState(prevState => ({timer: prevState.timer - 1}))
-      }, 1000)
-    }
+    this.startTimer()
   }
 
   componentWillUnmount() {
     clearInterval(this.timerId)
   }
 
+  startTimer = () => {
+    let {timer} = this.state
+    this.timerId = setInterval(() => {
+      timer -= 1
+      if (timer === 0) {
+        clearInterval(this.timerId)
+        this.setState({gameOn: false})
+      }
+      this.setState({timer})
+    }, 1000)
+  }
+
   thumbnailClicked = uniqId => {
-    const {mainImage, timer} = this.state
+    const {mainImage} = this.state
 
     if (uniqId !== mainImage.id) {
       this.setState({gameOn: false})
       clearInterval(this.timerId)
     }
     if (uniqId === mainImage.id) {
-      const newImage =
-        imagesList[Math.ceil(Math.random() * imagesList.length - 1)]
+      const newImage = imagesList[Math.floor(Math.random() * imagesList.length)]
       this.setState(prevState => ({
         score: prevState.score + 1,
         mainImage: newImage,
@@ -321,26 +327,24 @@ class App extends Component {
     return (
       <div className="bg-container">
         <nav className="navbar">
-          <div className="nav-logo-container">
-            <img
-              src="https://assets.ccbp.in/frontend/react-js/match-game-website-logo.png"
-              alt="website logo"
-              className="website-logo"
-            />
-          </div>
+          <img
+            src="https://assets.ccbp.in/frontend/react-js/match-game-website-logo.png"
+            alt="website logo"
+            className="website-logo"
+          />
           <ul className="score-container">
             <li>
-              <p className="nav-text">Score:{score}</p>
+              <p className="nav-text">
+                Score: <span className="span-element">{score}</span>
+              </p>
             </li>
-            <li>
-              <div className="timer-container">
-                <img
-                  src="https://assets.ccbp.in/frontend/react-js/match-game-timer-img.png"
-                  alt="timer"
-                  className="timer-logo"
-                />
-                <p className="timer-text">{timer} sec</p>
-              </div>
+            <li className="timer-container">
+              <img
+                src="https://assets.ccbp.in/frontend/react-js/match-game-timer-img.png"
+                alt="timer"
+                className="timer-logo"
+              />
+              <p className="span-element">{timer} sec</p>
             </li>
           </ul>
         </nav>

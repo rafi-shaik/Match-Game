@@ -4,7 +4,7 @@ const TabItem = props => {
   const {tabDetails, isActive, clickTabItem} = props
   const {tabId, displayText} = tabDetails
 
-  const activeButtonClass = isActive ? 'tab-btn active-btn' : 'tab-btn'
+  const activeButtonClass = isActive ? 'active-btn' : ''
 
   const buttonFunction = () => {
     clickTabItem(tabId)
@@ -14,7 +14,7 @@ const TabItem = props => {
     <li className="tab-item">
       <button
         type="button"
-        className={activeButtonClass}
+        className={`tab-btn ${activeButtonClass}`}
         onClick={buttonFunction}
       >
         {displayText}

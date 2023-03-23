@@ -10,3 +10,90 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.bg-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  padding-left: 45px;
+  padding-right: 45px;
+  padding-top: none;
+  padding-bottom: none;
+  background-color: #2c0e3a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.website-logo {
+  width: 150px;
+}
+
+.score-container {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+}
+
+.timer-container {
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+}
+
+.span-element {
+  color: #fec653;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Roboto';
+}
+
+.timer-logo {
+  height: 20px;
+  width: 20px;
+  margin-right: 5px;
+}
+
+.nav-text {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Roboto';
+}
+
+.game-body {
+  background-image: url('https://assets.ccbp.in/frontend/react-js/match-game-bg.png');
+  display: flex;
+  justify-content: center;
+  background-size: cover;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+}
+
+.main-image {
+  width: 50%;
+}
+
+.tabs-container {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+}
+
+.thumbnails-container {
+  width: 70%;
+  list-style-type: none;
+  flex-wrap: wrap;
+  display: flex;
+}
